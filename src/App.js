@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { Navbar } from 'modules-poc-parent';
+import PageModule from './components/PageModule';
+import AuthenticationHeader from './components/Authentication/AuthenticationHeader';
+import AuthenticationContent from './components/Authentication/AuthenticationContent';
+import DatabaseHeader from './components/Database/DatabaseHeader';
+import DatabaseContent from './components/Database/DatabaseContent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Navbar />
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <PageModule
+              header={AuthenticationHeader}
+              content={AuthenticationContent}
+            />
+          }
+        />
+        <Route
+          path='authentication'
+          element={
+            <PageModule
+              header={AuthenticationHeader}
+              content={AuthenticationContent}
+            />
+          }
+        />
+        <Route
+          path='database'
+          element={
+            <PageModule header={DatabaseHeader} content={DatabaseContent} />
+          }
+        />
+      </Routes>
     </div>
   );
 }
